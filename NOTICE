@@ -1,0 +1,29 @@
+The code in this repository (build.sh, tests/, README.md) is licensed under the MIT License;
+see LICENSE.
+
+The screen binaries produced by build.sh and published under GitHub Releases embed the following
+third-party projects, vendored unmodified as git submodules under vendor/ at their release tags.
+Each keeps its own license, and the combined binaries are governed by the union of these
+licenses, not by the MIT License above.
+
+GNU Screen
+  https://www.gnu.org/software/screen/
+  Copyright (c) Free Software Foundation, Inc., Jürgen Weigert, Michael Schroeder, Sadrul Habib
+  Chowdhury, Amadeusz Sławiński, and contributors
+  License: GNU General Public License v3.0 or later (GPL-3.0-or-later)
+
+ncurses
+  https://invisible-island.net/ncurses/
+  Copyright (c) Thomas E. Dickey and Free Software Foundation, Inc.
+  License: X11 License (MIT-style)
+
+libxcrypt (Linux glibc builds only)
+  https://github.com/besser82/libxcrypt
+  Copyright (c) Thorsten Kukuk, Björn Esser, Zack Weinberg, and contributors
+  License: GNU Lesser General Public License v2.1 or later, with some parts under BSD and
+  public-domain terms (see vendor/libxcrypt/LICENSING)
+
+Because screen is GPL-3.0-or-later, anyone who redistributes these binaries (including the
+release archives from this repo) must satisfy the GPL, such as making the corresponding source
+available and keeping the GPL notice attached. The release workflow attaches the exact vendored
+sources used for the build (screen-static-sources.tar.gz) to every release for this purpose.
