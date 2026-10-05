@@ -9,8 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-        with:
-          submodules: true
+      - run: .github/scripts/fetch-submodules.sh vendor/screen
       - name: Check that the release tag matches vendor/screen
         run: |
           screen_version="v$(sed -n 's/^AC_INIT(\[GNU Screen\],\[\([^]]*\)\].*/\1/p' vendor/screen/src/configure.ac)"
@@ -38,8 +37,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7
-        with:
-          submodules: recursive
+      - run: .github/scripts/fetch-submodules.sh
       - uses: mlugg/setup-zig@v2.2.1
         with:
           version: 0.15.2
