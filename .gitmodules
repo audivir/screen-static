@@ -1,0 +1,12 @@
+[submodule "vendor/ncurses"]
+    path = vendor/ncurses
+    url = https://github.com/ThomasDickey/ncurses-snapshots.git
+    shallow = true
+[submodule "vendor/screen"]
+    path = vendor/screen
+    url = https://git.savannah.gnu.org/git/screen.git
+    shallow = true
+[submodule "vendor/libxcrypt"]
+    path = vendor/libxcrypt
+    url = https://github.com/besser82/libxcrypt.git
+    shallow = true
