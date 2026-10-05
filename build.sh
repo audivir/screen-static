@@ -183,7 +183,20 @@ echo ">>> screen"
   rm -rf "$DIST"
   mkdir -p "$DIST/bin" "$DIST/share/man/man1" "$DIST/share/screen"
   cp screen "$DIST/bin/screen"
-  cp doc/screen.1 "$DIST/share/man/man1/"
+  # mandoc, the man of macOS, ignores macros in table cells, so rewrite them as inline escapes.
+  awk '
+    cell && /^T}/ { cell = 0 }
+    cell && $1 == ".br" { next }
+    cell && ($1 == ".I" || $1 == ".B") { f = substr($1, 2); sub(/^\.[IB] /, ""); $0 = "\\f" f $0 "\\fP" }
+    # two-font macros like .IR alternate their fonts across the arguments
+    cell && $1 ~ /^\.(IR|RI|BR|RB|IB|BI)$/ {
+      line = ""
+      for (i = 2; i <= NF; i++) line = line "\\f" substr($1, 2 + (i % 2), 1) $i
+      $0 = line "\\fP"
+    }
+    { print }
+    /T\{$/ { cell = 1 }
+  ' doc/screen.1 >"$DIST/share/man/man1/screen.1"
   cp -R utf8encodings "$DIST/share/screen/"
   cp etc/screenrc "$DIST/share/screen/screenrc.example"
 )
