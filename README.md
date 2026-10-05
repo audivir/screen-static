@@ -24,7 +24,7 @@ do not appear in `who`.
 
 - `zig`, GNU make (the `make` 3.81 of macOS is enough), `perl`, `git`
 - `autoconf`, `automake`, `libtool` (the git trees of screen and libxcrypt ship no `configure`
-  script)
+  script); on Debian and Ubuntu also `libltdl-dev`
 - On macOS: Xcode Command Line Tools (SDK)
 
 ## Installation
